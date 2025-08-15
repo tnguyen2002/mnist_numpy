@@ -1,15 +1,9 @@
 import numpy as np
 
 def softmax(z):
-    e_z = np.exp(z - np.max(z))
-    return e_z / e_z.sum(axis = 0)
-
-# correct solution:
-# def softmax(x):
-#     """Compute softmax values for each sets of scores in x."""
-#     e_x = np.exp(x - np.max(x))
-#     return e_x / e_x.sum(axis=0) # only difference
-
+    z = z - np.max(z, axis = 1, keepdims=True)
+    e_z = np.exp(z)
+    return e_z / np.sum(e_z, axis=1, keepdims=True)
 
 
 def relu(X):
