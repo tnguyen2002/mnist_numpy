@@ -11,7 +11,7 @@ from torch.utils.data import Dataset, random_split
 torch.manual_seed(12)
 def get_dataset():
     preprocess_transforms = transforms.Compose([
-        transforms.ToTensor()
+        transforms.ToTensor(),
     ])
     train_dataset, test_dataset = random_split(datasets.MNIST("./data", transform=preprocess_transforms, download=True), [.9, .1])
     return train_dataset, test_dataset
